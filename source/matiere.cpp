@@ -1,4 +1,4 @@
-#include "matiere.h"
+#include "../include/matiere.h"
 
 matiere::matiere(){}
 

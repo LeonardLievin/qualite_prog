@@ -1,4 +1,4 @@
-#include "semestre.h"
+#include "../include/semestre.h"
 
 semestre::semestre(){}
 

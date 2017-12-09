@@ -1,4 +1,4 @@
-#include "ecue.h"
+#include "../include/ecue.h"
 
 ecue::ecue(){}
 
