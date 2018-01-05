@@ -1,7 +1,9 @@
 #include "../Headers/uesimple.h"
 
 // constructeur, destructeur
-uesimple::uesimple(){}
+uesimple::uesimple() :
+    ecue(),d_ects{1}
+{}
 
 uesimple::uesimple(std::string codeUe, std::string nomUe, int coefficient,
                    int ects, int nombreHeureCours, int nombreHeureTp, int nombreHeureTd):

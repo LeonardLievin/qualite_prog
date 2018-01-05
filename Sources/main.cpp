@@ -1,7 +1,11 @@
 #include <iostream>
+#include "../Headers/uesimple.h"
 
 int main()
 {
-    std::cout << "Hello world!" << std::endl;
+    uesimple uetemporaire{};
+
+    uetemporaire.afficher(std::cout);
+
     return 0;
 }
