@@ -1,14 +1,10 @@
 #include "../Headers/exportation.h"
 
 exportation::exportation()
-{
-    //ctor
-}
+{}
 
 exportation::~exportation()
-{
-    //dtor
-}
+{}
 
 string exportation::definirNomFichier()
 {

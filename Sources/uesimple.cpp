@@ -6,7 +6,7 @@ uesimple::uesimple() :
 {}
 
 uesimple::uesimple(std::string codeUe, std::string nomUe, int coefficient,
-                   int ects, int nombreHeureCours, int nombreHeureTp, int nombreHeureTd):
+                   int ects, int nombreHeureCours, int nombreHeureTd, int nombreHeureTp):
     ecue(codeUe, nomUe, coefficient, nombreHeureCours, nombreHeureTd, nombreHeureTp )
     ,d_ects{ects}
 {}

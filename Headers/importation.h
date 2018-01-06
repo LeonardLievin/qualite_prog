@@ -20,13 +20,20 @@ class importation
         importation();
         virtual ~importation();
 
-        void execution() ;
+        bool execution() ;
         string recupererNomFichier () ;
         std::ifstream fichierOuvert(string) ;
         void affichageLigne(string) ;
+        void affichageImport();
 
         void creerUE(string , string ,int ,int , int, int , int);
         void creerECUE(string,string, int, int, int, int );
+
+        int nombreUEsimple() ;
+        uesimple* ueSimpleAuRang( int ) ;
+        int nombreECUE() ;
+        ecue* ecueAuRang( int ) ;
+
 
     protected:
     private:
