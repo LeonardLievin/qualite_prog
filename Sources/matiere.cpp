@@ -1,7 +1,10 @@
 #include "../Headers/matiere.h"
 
 // constructeur, destructeur
-matiere::matiere(){}
+matiere::matiere() :
+d_code {"code"}, d_intitule{"matiere"}, d_coefficient {1}
+{}
+
 matiere::matiere(std::string code_matiere, std::string intitule, int coefficient) :
     d_code {code_matiere}, d_intitule{intitule}, d_coefficient {coefficient}
 {}

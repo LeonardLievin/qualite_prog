@@ -34,25 +34,24 @@ bool exportation::creationFichier( bool fichierExiste, string nomFichier)
     else return true;
 }
 
+void exportation::ueAexporter( std::vector <uesimple> listeUE )
+{
+    for (int i =0 ; i < listeUE.size() ; i++)
+    {
+        ensembleUEsimple.push_back(listeUE.at(i)) ;
+    }
+}
 
+void exportation::ecueAexporter( std::vector <ecue> listeECUE )
+{
+    for (int i =0 ; i < listeECUE.size() ; i++)
+    {
+        ensembleECUE.push_back(listeECUE.at(i)) ;
+    }
+}
 
 void exportation::execution()
 {
-    string libelle = "ecue" ;
-    string matiere = "maths" ;
-    int coefficient = 3 ;
-    string libelle2 = "ue" ;
-    string matiere2 = "svt" ;
-    int coefficient2 = 2 ;
-    vector <string> tableauLibelle ;
-    vector< string> tableauMatiere;
-    vector < int > tableauCoefficient ;
-    tableauLibelle.push_back(libelle);
-    tableauLibelle.push_back(libelle2);
-    tableauMatiere.push_back(matiere);
-    tableauMatiere.push_back(matiere2);
-    tableauCoefficient.push_back(coefficient);
-    tableauCoefficient.push_back(coefficient2);
 
     string nomFichier ;
 
@@ -63,10 +62,28 @@ void exportation::execution()
     std::ofstream fichier(nomFichier , std::ios::out) ;
     if(fichier && creerFichier)
     {
-        for ( int i = 0 ; i < tableauLibelle.size() ; i++)
+        fichier << "Liste UEs simples : " <<endl;
+        for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
         {
-            fichier << tableauLibelle[i]<<" "<<tableauMatiere[i]<<" "<<tableauCoefficient[i]<<endl;
+            uesimple ueTemporaire = ensembleUEsimple.at(i) ;
+            fichier     << ueTemporaire.codeMatiere()<<" "<<ueTemporaire.intitule()<<" "
+                        << ueTemporaire.coefficient()<<" "<<ueTemporaire.ects()<<" "
+                        << ueTemporaire.nombreHeureCours()<<" "<<ueTemporaire.nombreHeureTd()<<" "
+                        << ueTemporaire.nombreHeureTp()
+                        <<endl;
         }
+
+        fichier <<endl<< "Liste ECUEs : " <<endl;
+        for ( int i = 0 ; i < ensembleECUE.size() ; i++)
+        {
+            ecue ecueTemporaire = ensembleECUE.at(i) ;
+            fichier     << ecueTemporaire.codeMatiere()<<" "<<ecueTemporaire.intitule()<<" "
+                        << ecueTemporaire.coefficient()<<" "
+                        << ecueTemporaire.nombreHeureCours()<<" "<<ecueTemporaire.nombreHeureTd()<<" "
+                        << ecueTemporaire.nombreHeureTp()
+                        <<endl;
+        }
+
         fichier.close();
         cout << "Fichier \""<< nomFichier << "\" créé" <<endl;
     }

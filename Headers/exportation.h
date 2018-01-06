@@ -6,6 +6,8 @@
 #include <fstream>
 #include <vector>
 
+#include "uesimple.h"
+
 using std::cout ;
 using std::string;
 using std::cin;
@@ -24,8 +26,14 @@ class exportation
         bool nomFichierExiste(string) ;
         bool creationFichier( bool, string) ;
 
+        void ueAexporter( std::vector<uesimple> ) ;
+        void ecueAexporter( std::vector<ecue> ) ;
+
     protected:
     private:
+        std::vector<uesimple> ensembleUEsimple;
+        std::vector<ecue> ensembleECUE;
+
 };
 
 #endif // EXPORTATION_H
