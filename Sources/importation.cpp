@@ -37,11 +37,14 @@ string importation::recupererNomFichier ()
 std::ifstream importation::fichierOuvert( string nomFichier)
 {
     std::ifstream fichier(nomFichier, std::ios::in);  // on ouvre en lecture
+    if(fichier) cout << "Fichier \""<< nomFichier<<"\" ouvert ... " << endl<<endl;
     return fichier ;
 }
 
 void importation::affichageImport()
 {
+    d_formation.afficher(std::cout);
+
     cout << "Liste des UEs simples : "<<endl;
     for ( int i =0 ; i< nombreUEsimple() ; i++)
     {
@@ -59,14 +62,14 @@ void importation::creerUE(string code_matiere,string intitule, int coefficient, 
 {
     uesimple UEtemporaire{code_matiere,intitule, coefficient, ects, heure_cours, heure_td, heure_tp };
     ensembleUEsimple.push_back(UEtemporaire);
-    cout << "L'UE : "<< intitule << " a été créée" << endl ;
+    //cout << "L'UE : "<< intitule << " a été créée" << endl ;
 }
 
 void importation::creerECUE(string code_matiere,string intitule, int coefficient, int heure_cours, int heure_td, int heure_tp )
 {
     ecue ECUEtemporaire{code_matiere,intitule, coefficient, heure_cours, heure_td, heure_tp };
     ensembleECUE.push_back(ECUEtemporaire);
-    cout << "L'ECUE : "<< intitule << " a été créée" << endl ;
+    //cout << "L'ECUE : "<< intitule << " a été créée" << endl ;
 }
 
 void importation::affichageLigne( string ligne)
@@ -82,25 +85,68 @@ void importation::affichageLigne( string ligne)
     }
 
     type = decoupageMot[0];
-    code_matiere = decoupageMot[1] ;
+
+    if (type == "Domaine")
+    {
+        string domaine;
+        for (int i =1 ; i<decoupageMot.size() ; i++)
+        {
+            domaine += decoupageMot.at(i) +" " ;
+        }
+        d_formation.setDomaine(domaine) ;
+    }
+    else if (type == "Mention")
+    {
+        string mention;
+        for (int i =1 ; i<decoupageMot.size() ; i++)
+        {
+            mention += decoupageMot.at(i)+" " ;
+        }
+        d_formation.setMention(mention) ;
+    }
+    else if (type == "Parcours")
+    {
+        string parcours;
+        for (int i =1 ; i<decoupageMot.size() ; i++)
+        {
+            parcours += decoupageMot.at(i)+" " ;
+        }
+        d_formation.setParcours(parcours) ;
+
+    }
+    else if (type == "Année")
+    {
+
+        d_formation.setAnnee(atoi(decoupageMot.at(1).c_str())) ;
+        d_formation.setNiveau(decoupageMot.at(2)) ;
+        d_formation.setAnneeNiveau(atoi(decoupageMot.at(3).c_str())) ;
+
+        semestre semestreTemporaire{atoi(decoupageMot.at(5).c_str()) } ;
+        d_formation.setSemestre(semestreTemporaire) ;
+
+    }
+    else if (type == "2")
+    {
+        code_matiere = decoupageMot[1] ;
     intitule = decoupageMot[2] ;
     coefficient = atoi(decoupageMot[3].c_str());
-
-    if (type == "ecue")
-    {
         heure_cours = atoi(decoupageMot[4].c_str()) ;
         heure_td = atoi(decoupageMot[5].c_str()) ;
         heure_tp = atoi(decoupageMot[6].c_str()) ;
         creerECUE(code_matiere,intitule,coefficient,heure_cours, heure_td, heure_tp) ;
     }
-    if (type == "uesimple")
+    else if (type == "1")
     {
+    code_matiere = decoupageMot[1] ;
+    intitule = decoupageMot[2] ;
+    coefficient = atoi(decoupageMot[3].c_str());
         ects = atoi(decoupageMot[4].c_str());
         heure_cours = atoi(decoupageMot[5].c_str()) ;
         heure_td = atoi(decoupageMot[6].c_str()) ;
         heure_tp = atoi(decoupageMot[7].c_str()) ;
         creerUE(code_matiere,intitule,coefficient,ects,heure_cours, heure_td, heure_tp) ;
     }
+
 }
 
 
@@ -115,9 +161,9 @@ bool importation::execution()
         string contenu;
         while(getline(fichier, contenu))
         {
-            affichageLigne(contenu) ;
-            cout << endl ;
+            if (!contenu.empty())affichageLigne(contenu) ;
         }
+
         fichier.close();
         return true ;
     }

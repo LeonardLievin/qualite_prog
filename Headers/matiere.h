@@ -22,7 +22,7 @@ public:
 
     // méthode abstraite
     virtual int nombreTotalHeure() const = 0;
-    virtual void afficher(std::ostream& ost) const =0;
+    virtual void afficher(std::ostream& ost) const;
 
 
 private:

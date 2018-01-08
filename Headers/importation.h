@@ -8,6 +8,8 @@
 #include <sstream>
 #include "uesimple.h"
 #include "ecue.h"
+#include "formation.h"
+#include "semestre.h"
 
 using std::cout ;
 using std::string;
@@ -37,6 +39,7 @@ class importation
 
     protected:
     private:
+        formation d_formation ;
         std::vector<uesimple> ensembleUEsimple;
         std::vector<ecue> ensembleECUE;
 

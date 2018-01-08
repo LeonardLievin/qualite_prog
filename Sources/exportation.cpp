@@ -66,7 +66,7 @@ void exportation::execution()
         for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
         {
             uesimple ueTemporaire = ensembleUEsimple.at(i) ;
-            fichier     << ueTemporaire.codeMatiere()<<" "<<ueTemporaire.intitule()<<" "
+            fichier     << "1 "<<ueTemporaire.codeMatiere()<<" "<<ueTemporaire.intitule()<<" "
                         << ueTemporaire.coefficient()<<" "<<ueTemporaire.ects()<<" "
                         << ueTemporaire.nombreHeureCours()<<" "<<ueTemporaire.nombreHeureTd()<<" "
                         << ueTemporaire.nombreHeureTp()
@@ -77,7 +77,7 @@ void exportation::execution()
         for ( int i = 0 ; i < ensembleECUE.size() ; i++)
         {
             ecue ecueTemporaire = ensembleECUE.at(i) ;
-            fichier     << ecueTemporaire.codeMatiere()<<" "<<ecueTemporaire.intitule()<<" "
+            fichier     << "2 "<<ecueTemporaire.codeMatiere()<<" "<<ecueTemporaire.intitule()<<" "
                         << ecueTemporaire.coefficient()<<" "
                         << ecueTemporaire.nombreHeureCours()<<" "<<ecueTemporaire.nombreHeureTd()<<" "
                         << ecueTemporaire.nombreHeureTp()

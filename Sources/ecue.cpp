@@ -49,8 +49,10 @@ int ecue::nombreTotalHeure() const
 
 void ecue::afficher(std::ostream& ost) const
 {
-    //matiere::afficher();
+    matiere::afficher(ost);
+    /*
     ost<<"Nombre d'heure de cours : "<<nombreHeureCours()<<std::endl;
     ost<<"Nombre d'heure de TD : "<<nombreHeureTd()<<std::endl;
     ost<<"Nombre d'heure de TP : "<<nombreHeureTp()<<std::endl;
+    */
 }

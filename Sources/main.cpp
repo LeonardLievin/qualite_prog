@@ -5,12 +5,12 @@
 
 int main()
 {
-    /*
+
     importation importa{} ;
 
     if(importa.execution())
         importa.affichageImport() ;
-    */
+    /*
     uesimple ues1{};
     ues1.afficher(std::cout);
 
@@ -40,7 +40,7 @@ int main()
     exporta.execution();
 
 
-
+*/
 
     return 0;
 }
