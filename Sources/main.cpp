@@ -5,12 +5,15 @@
 
 int main()
 {
-
+/*
     importation importa{} ;
 
     if(importa.execution())
         importa.affichageImport() ;
-    /*
+
+
+*/
+
     uesimple ues1{};
     ues1.afficher(std::cout);
 
@@ -32,15 +35,22 @@ int main()
     listECUE.push_back(ecue1) ;
     listECUE.push_back(ecue2) ;
 
+
+    semestre semestreTemporaire{5} ;
+
+    formation formationTemporaire{"science et technologie", "licence informatique", "miage", 2016, "licence",
+        3, semestreTemporaire} ;
+
     exportation exporta{} ;
 
     exporta.ueAexporter(listUEsimple) ;
     exporta.ecueAexporter(listECUE) ;
 
+    exporta.setFormation(formationTemporaire) ;
+
     exporta.execution();
 
 
-*/
 
     return 0;
 }

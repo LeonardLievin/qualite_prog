@@ -42,6 +42,12 @@ void exportation::ueAexporter( std::vector <uesimple> listeUE )
     }
 }
 
+
+void exportation::setFormation(formation formationParametre)
+{
+    d_formation = formationParametre ;
+}
+
 void exportation::ecueAexporter( std::vector <ecue> listeECUE )
 {
     for (int i =0 ; i < listeECUE.size() ; i++)
@@ -62,7 +68,17 @@ void exportation::execution()
     std::ofstream fichier(nomFichier , std::ios::out) ;
     if(fichier && creerFichier)
     {
-        fichier << "Liste UEs simples : " <<endl;
+
+
+        if (d_formation.domaine().size()>0)fichier << "Domaine " <<d_formation.domaine()<<endl;
+        if (d_formation.mention().size()>0)fichier <<"Mention "<<d_formation.mention()<<endl;
+        if (d_formation.parcours().size()>0)fichier <<"Parcours "<<d_formation.parcours()<<endl;
+        if (d_formation.annee()>1)fichier <<"Année "<< d_formation.annee() << " "<<d_formation.niveau()<<" "
+        << d_formation.anneeNiveau()<<" Semestre "<< d_formation.semestreValeur().getNumero()<<endl<<endl;
+
+
+
+        if (ensembleUEsimple.size()>0)fichier << "Liste UEs simples : " <<endl;
         for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
         {
             uesimple ueTemporaire = ensembleUEsimple.at(i) ;
@@ -73,7 +89,7 @@ void exportation::execution()
                         <<endl;
         }
 
-        fichier <<endl<< "Liste ECUEs : " <<endl;
+        if (ensembleECUE.size()>0)fichier <<endl<< "Liste ECUEs : " <<endl;
         for ( int i = 0 ; i < ensembleECUE.size() ; i++)
         {
             ecue ecueTemporaire = ensembleECUE.at(i) ;
@@ -86,6 +102,7 @@ void exportation::execution()
 
         fichier.close();
         cout << "Fichier \""<< nomFichier << "\" créé" <<endl;
+
     }
 
     else

@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "uesimple.h"
+#include "formation.h"
 
 using std::cout ;
 using std::string;
@@ -28,11 +29,13 @@ class exportation
 
         void ueAexporter( std::vector<uesimple> ) ;
         void ecueAexporter( std::vector<ecue> ) ;
+        void setFormation( formation);
 
     protected:
     private:
         std::vector<uesimple> ensembleUEsimple;
         std::vector<ecue> ensembleECUE;
+        formation d_formation ;
 
 };
 
