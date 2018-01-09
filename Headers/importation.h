@@ -20,7 +20,9 @@ class importation
         bool execution() ;
         int nombreECUE() ;
         int nombreUEsimple() ;
+        int entier(string);
         string recupererNomFichier () ;
+        string recupererLigne(std::vector<string>) ;
         std::ifstream fichierOuvert(string) ;
         uesimple* ueSimpleAuRang( int ) ;
         ecue* ecueAuRang( int ) ;
@@ -32,6 +34,8 @@ class importation
         void affichageEcue();
         void ajoutUE(uesimple);
         void ajoutECUE(ecue );
+
+
 
     protected:
     private:
