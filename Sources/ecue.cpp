@@ -40,6 +40,10 @@ void ecue::mettreNombreHeureTd (int heure_td)
 {
     d_nombreHeureTd = heure_td ;
 }
+void ecue::afficher_Ecue(std::ostream& ost) const
+{
+    ost<<" "<<nombreHeureCours()<<" "<<nombreHeureTd()<<" "<<nombreHeureTp()<<std::endl;
+}
 
 // méthode abstraite
 int ecue::nombreTotalHeure() const
@@ -50,7 +54,5 @@ int ecue::nombreTotalHeure() const
 void ecue::afficher(std::ostream& ost) const
 {
     matiere::afficher(ost);
-    ost<<"Nombre d'heure de cours : "<<nombreHeureCours()<<std::endl;
-    ost<<"Nombre d'heure de TD : "<<nombreHeureTd()<<std::endl;
-    ost<<"Nombre d'heure de TP : "<<nombreHeureTp()<<std::endl<<std::endl;
+    afficher_Ecue(ost) ;
 }

@@ -5,19 +5,19 @@
 
 int main()
 {
-/*
+
     importation importa{} ;
 
     if(importa.execution())
         importa.affichageImport() ;
 
 
-*/
+/*
 
-    uesimple ues1{};
+    uesimple ues1{ "codeUe", "nomUe", 1, 100, 7, 6, 5};
     ues1.afficher(std::cout);
 
-    ecue ecue1{};
+    ecue ecue1{"codeEcue", "nomEcue", 1, 7, 6, 5};
     ecue1.afficher(std::cout);
 
     uesimple ues2{};
@@ -50,6 +50,7 @@ int main()
 
     exporta.execution();
 
+*/
 
 
     return 0;

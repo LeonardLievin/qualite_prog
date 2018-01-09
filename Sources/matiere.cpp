@@ -25,5 +25,5 @@ int matiere::coefficient() const{
 
 void matiere::afficher(std::ostream& ost) const
 {
-    ost << d_code << " " << d_intitule << " "<< d_coefficient << std::endl;
+    ost << d_code << " " << d_intitule << " "<< d_coefficient ;
 }

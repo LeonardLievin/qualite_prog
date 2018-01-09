@@ -28,6 +28,8 @@ class importation
         // methode modificateur
         void affichageLigne(string) ;
         void affichageImport();
+        void affichageUeSimple();
+        void affichageEcue();
         void ajoutUE(uesimple);
         void ajoutECUE(ecue );
 

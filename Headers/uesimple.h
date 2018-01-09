@@ -15,9 +15,10 @@ public:
     // méthode retour
     int ects() const;
     void mettreEcts(int );
+    void afficher_UE(std::ostream &ost) const;
 
     // méthode abstraite
-    virtual void afficher_UE(std::ostream &ost) const;
+    virtual void afficher(std::ostream &ost) const;
 
 private:
     int d_ects;

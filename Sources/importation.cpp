@@ -72,21 +72,32 @@ bool importation::execution()
 
 // méthode modificateur
 
-void importation::affichageImport()
+void importation::affichageUeSimple()
 {
-    d_formation.afficher(std::cout);
-
-    cout << "Liste des UEs simples : "<<endl;
+     if(nombreUEsimple()>0)cout << "Liste des UEs simples : "<<endl;
     for ( int i =0 ; i< nombreUEsimple() ; i++)
     {
         ueSimpleAuRang(i)->afficher(std::cout);
     }
+}
 
-    cout << endl<<"Liste des ECUEs simples : "<<endl;
+void importation::affichageEcue()
+{
+    if(nombreECUE()>0)cout << endl<<"Liste des ECUEs simples : "<<endl;
     for ( int i =0 ; i< nombreECUE() ; i++)
     {
         ecueAuRang(i)->afficher(std::cout);
     }
+}
+
+void importation::affichageImport()
+{
+    d_formation.afficher(std::cout);
+
+    affichageUeSimple();
+
+    affichageEcue();
+
 }
 
 void importation::ajoutUE( uesimple ue )

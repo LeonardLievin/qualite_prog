@@ -61,6 +61,7 @@ void exportation::ecueAexporter( std::vector <ecue> listeECUE )
     }
 }
 
+
 void exportation::execution()
 {
 
@@ -74,35 +75,21 @@ void exportation::execution()
     if(fichier && creerFichier)
     {
 
-
-        if (d_formation.domaine().size()>0)fichier << "Domaine " <<d_formation.domaine()<<endl;
-        if (d_formation.mention().size()>0)fichier <<"Mention "<<d_formation.mention()<<endl;
-        if (d_formation.parcours().size()>0)fichier <<"Parcours "<<d_formation.parcours()<<endl;
-        if (d_formation.annee()>1)fichier <<"Année "<< d_formation.annee() << " "<<d_formation.niveau()<<" "
-        << d_formation.anneeNiveau()<<" Semestre "<< d_formation.semestreValeur().numero()<<endl<<endl;
-
+        d_formation.afficher(fichier);
 
 
         if (ensembleUEsimple.size()>0)fichier << "Liste UEs simples : " <<endl;
         for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
         {
-            uesimple ueTemporaire = ensembleUEsimple.at(i) ;
-            fichier     << "1 "<<ueTemporaire.codeMatiere()<<" "<<ueTemporaire.intitule()<<" "
-                        << ueTemporaire.coefficient()<<" "<<ueTemporaire.ects()<<" "
-                        << ueTemporaire.nombreHeureCours()<<" "<<ueTemporaire.nombreHeureTd()<<" "
-                        << ueTemporaire.nombreHeureTp()
-                        <<endl;
+            fichier << "1 ";
+            ensembleUEsimple.at(i).afficher(fichier);
         }
 
         if (ensembleECUE.size()>0)fichier <<endl<< "Liste ECUEs : " <<endl;
         for ( int i = 0 ; i < ensembleECUE.size() ; i++)
         {
-            ecue ecueTemporaire = ensembleECUE.at(i) ;
-            fichier     << "2 "<<ecueTemporaire.codeMatiere()<<" "<<ecueTemporaire.intitule()<<" "
-                        << ecueTemporaire.coefficient()<<" "
-                        << ecueTemporaire.nombreHeureCours()<<" "<<ecueTemporaire.nombreHeureTd()<<" "
-                        << ecueTemporaire.nombreHeureTp()
-                        <<endl;
+            fichier << "2 ";
+            ensembleECUE.at(i).afficher(fichier);
         }
 
         fichier.close();

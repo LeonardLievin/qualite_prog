@@ -25,11 +25,17 @@ void uesimple::mettreEcts(int ects)
     d_ects = ects;
 }
 
-// méthode abstraite
 void uesimple::afficher_UE(std::ostream &ost) const{
-    ecue::afficher(ost);
-    ost << "ECTS : " << d_ects << std::endl;
+    ost << " " << d_ects ;
 }
+
+// méthode abstraite
+void uesimple::afficher(std::ostream &ost) const{
+    matiere::afficher(ost);
+    afficher_UE(ost) ;
+    ecue::afficher_Ecue(ost);
+}
+
 
 // surcharge
 std::ostream& operator<<(std::ostream& ost, const uesimple &ue){

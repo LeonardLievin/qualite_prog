@@ -23,6 +23,7 @@ public:
     string niveau() const;
     int annee() const;
     int anneeNiveau() const;
+    bool existe() const;
     semestre semestreValeur() const;
 
     // méthode modificateur
@@ -44,6 +45,7 @@ private:
     int d_anneeNiveau ;
     int d_annee ;
     semestre d_semestre ;
+    bool d_existe;
 
 };
 

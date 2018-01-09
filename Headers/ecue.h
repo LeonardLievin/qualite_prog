@@ -21,6 +21,7 @@ class ecue : public matiere
         void mettreNombreHeureCours (int heure_cours) ;
         void mettreNombreHeureTp (int heure_tp) ;
         void mettreNombreHeureTd (int heure_td) ;
+        void afficher_Ecue(std::ostream& ost) const ;
 
         // méthodes abstraite
         virtual void afficher(std::ostream& ost) const override;

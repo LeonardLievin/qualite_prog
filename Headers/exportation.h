@@ -32,6 +32,7 @@ class exportation
         std::vector<ecue> ensembleECUE;
         formation d_formation ;
 
+
 };
 
 #endif // EXPORTATION_H

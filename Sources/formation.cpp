@@ -39,7 +39,10 @@ int formation::anneeNiveau() const
     return d_anneeNiveau ;
 }
 
-
+bool formation::existe() const
+{
+    return d_existe ;
+}
 
 semestre formation::semestreValeur() const
 {
@@ -75,5 +78,6 @@ void formation::afficher(std::ostream &ost) const
     if(d_domaine.size()>0)ost << "Domaine : " << d_domaine << endl;
     if(d_mention.size()>0)ost << "Mention : " << d_mention << endl;
     if(d_parcours.size()>0)ost << "Parcours : " << d_parcours << endl;
-    ost << "Année " << d_annee << endl <<d_niveau<<" "<<d_anneeNiveau<<" Semestre "<< d_semestre.numero()<< endl<<endl;
+    if(d_annee>1 && d_annee<2500)ost << "Année " << d_annee << " " <<d_niveau<<" "<<d_anneeNiveau<<" Semestre "<< d_semestre.numero()<< endl<<endl;
+
 }
