@@ -1,10 +1,14 @@
 #include "../Headers/importation.h"
 
+// constructeur, destructeur
+
 importation::importation()
 {}
 
 importation::~importation()
 {}
+
+// méthode retour
 
 int importation::nombreECUE()
 {
@@ -40,6 +44,33 @@ std::ifstream importation::fichierOuvert( string nomFichier)
     if(fichier) cout << "Fichier \""<< nomFichier<<"\" ouvert ... " << endl<<endl;
     return fichier ;
 }
+
+
+bool importation::execution()
+{
+    string nomFichier =  recupererNomFichier() ;
+    std::ifstream fichier = fichierOuvert(nomFichier);
+
+    if(fichier)
+    {
+        string contenu;
+        while(getline(fichier, contenu))
+        {
+            if (!contenu.empty())affichageLigne(contenu) ;
+        }
+
+        fichier.close();
+        return true ;
+    }
+    else
+    {
+        cout << "Le fichier n'existe pas" << endl;
+        return false;
+    }
+
+}
+
+// méthode modificateur
 
 void importation::affichageImport()
 {
@@ -149,28 +180,5 @@ void importation::affichageLigne( string ligne)
 
 
 
-bool importation::execution()
-{
-    string nomFichier =  recupererNomFichier() ;
-    std::ifstream fichier = fichierOuvert(nomFichier);
-
-    if(fichier)
-    {
-        string contenu;
-        while(getline(fichier, contenu))
-        {
-            if (!contenu.empty())affichageLigne(contenu) ;
-        }
-
-        fichier.close();
-        return true ;
-    }
-    else
-    {
-        cout << "Le fichier n'existe pas" << endl;
-        return false;
-    }
-
-}
 
 

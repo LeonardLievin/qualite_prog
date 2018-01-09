@@ -10,7 +10,7 @@ uechoix::uechoix(std::string code_matiere, std::string intitule, int coefficient
 
 uechoix::~uechoix(){}
 
-// méthode void
+// méthode modificateur
 void uechoix::setUe(ue* nouvelleUe)
 {
     d_choixDisponibleUe.push_back(nouvelleUe);

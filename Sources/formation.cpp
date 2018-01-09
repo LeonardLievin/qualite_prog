@@ -3,11 +3,13 @@
 // constructeur, destructeur
 formation::formation()
 {}
+
 formation::formation(string domaine, string mention, string parcours, int annee, string niveau,
-        int anneeNiveau, semestre semestreParametre):
-d_domaine{domaine}, d_mention{mention}, d_parcours{parcours}, d_annee{annee}, d_niveau{niveau},
-d_anneeNiveau{anneeNiveau} , d_semestre{semestreParametre}
+    int anneeNiveau, semestre semestreParametre):
+        d_domaine{domaine}, d_mention{mention}, d_parcours{parcours}, d_annee{annee}, d_niveau{niveau},
+        d_anneeNiveau{anneeNiveau} , d_semestre{semestreParametre}
 {}
+
 formation::~formation()
 {}
 
@@ -43,6 +45,8 @@ semestre formation::semestreValeur() const
 {
     return d_semestre;
 }
+
+// méthode modificateur
 
 void formation::mettreDomaine(string domaine)
 {   d_domaine = domaine ;}

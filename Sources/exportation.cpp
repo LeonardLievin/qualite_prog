@@ -1,11 +1,13 @@
 #include "../Headers/exportation.h"
 
+// constructeur, destructeur
 exportation::exportation()
 {}
 
 exportation::~exportation()
 {}
 
+// méthode retour
 string exportation::definirNomFichier()
 {
     string fichier;
@@ -33,6 +35,9 @@ bool exportation::creationFichier( bool fichierExiste, string nomFichier)
     }
     else return true;
 }
+
+
+// méthode modificateur
 
 void exportation::ueAexporter( std::vector <uesimple> listeUE )
 {
