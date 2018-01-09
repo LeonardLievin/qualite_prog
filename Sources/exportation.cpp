@@ -43,7 +43,7 @@ void exportation::ueAexporter( std::vector <uesimple> listeUE )
 }
 
 
-void exportation::setFormation(formation formationParametre)
+void exportation::mettreFormation(formation formationParametre)
 {
     d_formation = formationParametre ;
 }
@@ -74,7 +74,7 @@ void exportation::execution()
         if (d_formation.mention().size()>0)fichier <<"Mention "<<d_formation.mention()<<endl;
         if (d_formation.parcours().size()>0)fichier <<"Parcours "<<d_formation.parcours()<<endl;
         if (d_formation.annee()>1)fichier <<"Année "<< d_formation.annee() << " "<<d_formation.niveau()<<" "
-        << d_formation.anneeNiveau()<<" Semestre "<< d_formation.semestreValeur().getNumero()<<endl<<endl;
+        << d_formation.anneeNiveau()<<" Semestre "<< d_formation.semestreValeur().numero()<<endl<<endl;
 
 
 

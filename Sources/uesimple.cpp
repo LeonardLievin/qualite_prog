@@ -20,7 +20,7 @@ int uesimple::ects() const
 }
 
 // méthode modificateur
-void uesimple::setEcts(int ects)
+void uesimple::mettreEcts(int ects)
 {
     d_ects = ects;
 }

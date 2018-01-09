@@ -46,7 +46,7 @@ int main()
     exporta.ueAexporter(listUEsimple) ;
     exporta.ecueAexporter(listECUE) ;
 
-    exporta.setFormation(formationTemporaire) ;
+    exporta.mettreFormation(formationTemporaire) ;
 
     exporta.execution();
 

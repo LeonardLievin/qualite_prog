@@ -1,5 +1,6 @@
 #ifndef MATIERE_H
 #define MATIERE_H
+
 #include <iostream>
 
 class matiere

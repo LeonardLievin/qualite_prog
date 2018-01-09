@@ -14,7 +14,7 @@ public:
 
     // méthode retour
     int ects() const;
-    void setEcts(int ects);
+    void mettreEcts(int );
 
     // méthode abstraite
     virtual void afficher_UE(std::ostream &ost) const;

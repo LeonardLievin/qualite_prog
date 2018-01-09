@@ -7,9 +7,9 @@ semestre::semestre(int numero):d_numero{numero}
 semestre::~semestre(){}
 
 // méthode retour
-int semestre::getNumero() const{
+int semestre::numero() const{
     return d_numero;
 }
-std::vector<ue*> semestre::getUEs() const{
+std::vector<ue*> semestre::mettreUEs() const{
     return d_ue;
 }

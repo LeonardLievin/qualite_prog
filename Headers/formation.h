@@ -1,10 +1,11 @@
 #ifndef FORMATION_H
 #define FORMATION_H
-#include <iostream>
-#include <vector>
+
 #include "semestre.h"
 
-using namespace std;
+using std::cout ;
+using std::string;
+using std::endl;
 
 class formation
 {
@@ -19,19 +20,19 @@ public:
     string domaine() const;
     string mention() const;
     string parcours() const;
-    int annee() const;
     string niveau() const;
+    int annee() const;
     int anneeNiveau() const;
     semestre semestreValeur() const;
 
-    void setDomaine(string) ;
-    void setMention(string) ;
-    void setParcours(string);
-    void setNiveau(string) ;
-    void setAnnee(int) ;
-    void setAnneeNiveau(int) ;
-    void setSemestre (semestre);
-
+    // méthode modificateur
+    void mettreDomaine(string) ;
+    void mettreMention(string) ;
+    void mettreParcours(string);
+    void mettreNiveau(string) ;
+    void mettreAnnee(int) ;
+    void mettreAnneeNiveau(int) ;
+    void mettreSemestre (semestre);
     void afficher(std::ostream &ost) const;
 
 
@@ -41,7 +42,6 @@ private:
     string d_parcours ;
     string d_niveau ;
     int d_anneeNiveau ;
-
     int d_annee ;
     semestre d_semestre ;
 

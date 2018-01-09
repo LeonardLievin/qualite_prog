@@ -1,35 +1,30 @@
 #ifndef EXPORTATION_H
 #define EXPORTATION_H
 
-#include <iostream>
-#include <string>
 #include <fstream>
-#include <vector>
 
 #include "uesimple.h"
 #include "formation.h"
 
-using std::cout ;
-using std::string;
 using std::cin;
-using std::endl;
-using std::vector;
 
 class exportation
 {
     public:
+        // constructeur, destructeur
         exportation();
-        virtual ~exportation();
+        ~exportation();
 
-        void execution();
-
+        // methode retour
         string definirNomFichier();
         bool nomFichierExiste(string) ;
         bool creationFichier( bool, string) ;
 
+        // methode modificateur
+        void execution();
         void ueAexporter( std::vector<uesimple> ) ;
         void ecueAexporter( std::vector<ecue> ) ;
-        void setFormation( formation);
+        void mettreFormation( formation);
 
     protected:
     private:

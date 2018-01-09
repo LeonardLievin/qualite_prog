@@ -28,15 +28,15 @@ int ecue::nombreHeureTd() const
 }
 
 // méthode void
-void ecue::setNbCours (int heure_cours)
+void ecue::mettreNombreHeureCours (int heure_cours)
 {
     d_nombreHeureCours = heure_cours ;
 }
-void ecue::setNbTp (int heure_tp)
+void ecue::mettreNombreHeureTp (int heure_tp)
 {
     d_nombreHeureTp = heure_tp ;
 }
-void ecue::setNbTd (int heure_td)
+void ecue::mettreNombreHeureTd (int heure_td)
 {
     d_nombreHeureTd = heure_td ;
 }

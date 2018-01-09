@@ -2,19 +2,18 @@
 #define SEMESTRE_H
 
 #include "ue.h"
-#include <vector>
 
 class semestre
 {
 public:
     // constructeur, destructeur
     semestre();
-    semestre(int numero);
+    semestre(int );
     ~semestre();
 
     // méthode retour
-    int getNumero() const;
-    std::vector<ue*> getUEs() const;
+    int numero() const;
+    std::vector<ue*> mettreUEs() const;
 
 private:
     int d_numero ;

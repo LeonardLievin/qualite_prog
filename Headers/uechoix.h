@@ -6,24 +6,24 @@
 class uechoix : public ue
 {
 public:
-    // constructeur destructeur
+    // constructeur, destructeur
     uechoix();
-    uechoix(std::string code_matiere, std::string intitule, int coefficient, int ects);
+    uechoix(std::string , std::string , int coeficient, int );
     ~uechoix();
 
-    // méthode void
-    void setUe(ue* newUe);
-    void supprimerUe(int index);
+    // méthode modificateur
+    void setUe(ue*);
+    void supprimerUe(int);
 
     // méthode retour
     std::vector <ue*> ueDisponible() const ;
 
     // méthode abstraite
-    virtual void afficher(std::ostream& ost) const override;
+    virtual void afficher(std::ostream&) const override;
     virtual int nombreTotalHeure() const override;
 
 private:
-    std::vector <ue*> d_choix_disponible_ue;
+    std::vector <ue*> d_choixDisponibleUe;
 };
 
 #endif // UECHOIX_H

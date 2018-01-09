@@ -5,46 +5,46 @@ uechoix::uechoix(){}
 
 uechoix::uechoix(std::string code_matiere, std::string intitule, int coefficient, int ects):
     ue{code_matiere, intitule, coefficient , ects},
-    d_choix_disponible_ue{}
+    d_choixDisponibleUe{}
 {}
 
 uechoix::~uechoix(){}
 
 // méthode void
-void uechoix::setUe(ue* newUe)
+void uechoix::setUe(ue* nouvelleUe)
 {
-    d_choix_disponible_ue.push_back(newUe);
+    d_choixDisponibleUe.push_back(nouvelleUe);
 }
 
 void uechoix::supprimerUe(int index)
 {
-    d_choix_disponible_ue[index] = nullptr;
-    delete d_choix_disponible_ue[index];
-    d_choix_disponible_ue[index] = d_choix_disponible_ue[d_choix_disponible_ue.size()-1];
-    d_choix_disponible_ue.pop_back();
+    d_choixDisponibleUe[index] = nullptr;
+    delete d_choixDisponibleUe[index];
+    d_choixDisponibleUe[index] = d_choixDisponibleUe[d_choixDisponibleUe.size()-1];
+    d_choixDisponibleUe.pop_back();
 }
 
 // méthode retour
 std::vector <ue*> uechoix::ueDisponible() const
 {
-    return d_choix_disponible_ue;
+    return d_choixDisponibleUe;
 }
 
 // méthode abstraite
 void uechoix::afficher(std::ostream& ost) const
 {
-    for (unsigned int i = 0 ; i <=d_choix_disponible_ue.size() ; i++ )
+    for (unsigned int i = 0 ; i <=d_choixDisponibleUe.size() ; i++ )
     {
-        d_choix_disponible_ue[i]->afficher(ost);
+        d_choixDisponibleUe[i]->afficher(ost);
     }
 }
 
 int uechoix::nombreTotalHeure() const
 {
     int somme = 0 ;
-    for (unsigned int i = 0 ; i <=d_choix_disponible_ue.size() ; i++ )
+    for (unsigned int i = 0 ; i <=d_choixDisponibleUe.size() ; i++ )
     {
-        somme = somme + d_choix_disponible_ue.at(i)->nombreTotalHeure() ;
+        somme = somme + d_choixDisponibleUe.at(i)->nombreTotalHeure() ;
     }
     return somme;
 }

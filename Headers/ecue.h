@@ -18,9 +18,9 @@ class ecue : public matiere
         int nombreHeureTd() const;
 
         // méthodes void
-        void setNbCours (int h_cours) ;
-        void setNbTp (int h_tp) ;
-        void setNbTd (int h_td) ;
+        void mettreNombreHeureCours (int heure_cours) ;
+        void mettreNombreHeureTp (int heure_tp) ;
+        void mettreNombreHeureTd (int heure_td) ;
 
         // méthodes abstraite
         virtual void afficher(std::ostream& ost) const override;

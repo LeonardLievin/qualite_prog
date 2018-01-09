@@ -4,7 +4,6 @@
 #include "ue.h"
 #include "ecue.h"
 
-
 class uecompose : public ue
 {
 public:
@@ -14,11 +13,11 @@ public:
 
     // méthode retour
     std::vector < ecue* > ensembleEcue() const ;
-    int trouverEcue(std::string codeUe);
+    int trouverEcue(std::string);
 
     // méthode modificateur
-    void ajouterEcue(ecue *nouvelleEcue);
-    void supprimerEcue(int index);
+    void ajouterEcue(ecue*);
+    void supprimerEcue(int );
 
     // methode abstraite
     virtual void afficher(std::ostream &ost) const override;

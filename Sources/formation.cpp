@@ -44,26 +44,26 @@ semestre formation::semestreValeur() const
     return d_semestre;
 }
 
-void formation::setDomaine(string domaine)
+void formation::mettreDomaine(string domaine)
 {   d_domaine = domaine ;}
 
-void formation::setMention(string mention)
+void formation::mettreMention(string mention)
 {   d_mention = mention ;}
 
-void formation::setParcours(string parcours)
+void formation::mettreParcours(string parcours)
 {   d_parcours = parcours ;}
 
-void formation::setNiveau(string niveau)
+void formation::mettreNiveau(string niveau)
 {   d_niveau = niveau ;}
 
-void formation::setAnneeNiveau(int anneeNiveau)
+void formation::mettreAnneeNiveau(int anneeNiveau)
 {   d_anneeNiveau = anneeNiveau ; }
 
-void formation::setAnnee(int annee)
+void formation::mettreAnnee(int annee)
 {   d_annee = annee ; }
 
 
-void formation::setSemestre (semestre semestreParametre)
+void formation::mettreSemestre (semestre semestreParametre)
 {   d_semestre = semestreParametre ;}
 
 void formation::afficher(std::ostream &ost) const
@@ -71,5 +71,5 @@ void formation::afficher(std::ostream &ost) const
     if(d_domaine.size()>0)ost << "Domaine : " << d_domaine << endl;
     if(d_mention.size()>0)ost << "Mention : " << d_mention << endl;
     if(d_parcours.size()>0)ost << "Parcours : " << d_parcours << endl;
-    ost << "Année " << d_annee << endl <<d_niveau<<" "<<d_anneeNiveau<<" Semestre "<< d_semestre.getNumero()<< endl<<endl;
+    ost << "Année " << d_annee << endl <<d_niveau<<" "<<d_anneeNiveau<<" Semestre "<< d_semestre.numero()<< endl<<endl;
 }

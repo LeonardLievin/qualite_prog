@@ -58,18 +58,14 @@ void importation::affichageImport()
     }
 }
 
-void importation::creerUE(string code_matiere,string intitule, int coefficient, int ects, int heure_cours, int heure_td, int heure_tp )
+void importation::ajoutUE( uesimple ue )
 {
-    uesimple UEtemporaire{code_matiere,intitule, coefficient, ects, heure_cours, heure_td, heure_tp };
-    ensembleUEsimple.push_back(UEtemporaire);
-    //cout << "L'UE : "<< intitule << " a été créée" << endl ;
+    ensembleUEsimple.push_back(ue);
 }
 
-void importation::creerECUE(string code_matiere,string intitule, int coefficient, int heure_cours, int heure_td, int heure_tp )
+void importation::ajoutECUE( ecue ecueTemporaire )
 {
-    ecue ECUEtemporaire{code_matiere,intitule, coefficient, heure_cours, heure_td, heure_tp };
-    ensembleECUE.push_back(ECUEtemporaire);
-    //cout << "L'ECUE : "<< intitule << " a été créée" << endl ;
+    ensembleECUE.push_back(ecueTemporaire);
 }
 
 void importation::affichageLigne( string ligne)
@@ -93,7 +89,7 @@ void importation::affichageLigne( string ligne)
         {
             domaine += decoupageMot.at(i) +" " ;
         }
-        d_formation.setDomaine(domaine) ;
+        d_formation.mettreDomaine(domaine) ;
     }
     else if (type == "Mention")
     {
@@ -102,7 +98,7 @@ void importation::affichageLigne( string ligne)
         {
             mention += decoupageMot.at(i)+" " ;
         }
-        d_formation.setMention(mention) ;
+        d_formation.mettreMention(mention) ;
     }
     else if (type == "Parcours")
     {
@@ -111,40 +107,42 @@ void importation::affichageLigne( string ligne)
         {
             parcours += decoupageMot.at(i)+" " ;
         }
-        d_formation.setParcours(parcours) ;
+        d_formation.mettreParcours(parcours) ;
 
     }
     else if (type == "Année")
     {
 
-        d_formation.setAnnee(atoi(decoupageMot.at(1).c_str())) ;
-        d_formation.setNiveau(decoupageMot.at(2)) ;
-        d_formation.setAnneeNiveau(atoi(decoupageMot.at(3).c_str())) ;
+        d_formation.mettreAnnee(atoi(decoupageMot.at(1).c_str())) ;
+        d_formation.mettreNiveau(decoupageMot.at(2)) ;
+        d_formation.mettreAnneeNiveau(atoi(decoupageMot.at(3).c_str())) ;
 
         semestre semestreTemporaire{atoi(decoupageMot.at(5).c_str()) } ;
-        d_formation.setSemestre(semestreTemporaire) ;
+        d_formation.mettreSemestre(semestreTemporaire) ;
 
+    }
+    else if (type == "2" || type == "1")
+    {
+        code_matiere = decoupageMot[1] ;
+        intitule = decoupageMot[2] ;
+        coefficient = atoi(decoupageMot[3].c_str());
     }
     else if (type == "2")
     {
-        code_matiere = decoupageMot[1] ;
-    intitule = decoupageMot[2] ;
-    coefficient = atoi(decoupageMot[3].c_str());
         heure_cours = atoi(decoupageMot[4].c_str()) ;
         heure_td = atoi(decoupageMot[5].c_str()) ;
         heure_tp = atoi(decoupageMot[6].c_str()) ;
-        creerECUE(code_matiere,intitule,coefficient,heure_cours, heure_td, heure_tp) ;
+        ecue ecueTemporaire {code_matiere,intitule,coefficient,heure_cours, heure_td, heure_tp} ;
+        ajoutECUE(ecueTemporaire) ;
     }
     else if (type == "1")
     {
-    code_matiere = decoupageMot[1] ;
-    intitule = decoupageMot[2] ;
-    coefficient = atoi(decoupageMot[3].c_str());
         ects = atoi(decoupageMot[4].c_str());
         heure_cours = atoi(decoupageMot[5].c_str()) ;
         heure_td = atoi(decoupageMot[6].c_str()) ;
         heure_tp = atoi(decoupageMot[7].c_str()) ;
-        creerUE(code_matiere,intitule,coefficient,ects,heure_cours, heure_td, heure_tp) ;
+        uesimple ueTemporaire {code_matiere,intitule,coefficient,ects,heure_cours, heure_td, heure_tp};
+         ajoutUE(ueTemporaire) ;
     }
 
 }
