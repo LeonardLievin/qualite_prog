@@ -6,6 +6,7 @@
 
 #include "uesimple.h"
 #include "formation.h"
+#include "stockageDonnees.h"
 
 using std::cin;
 
@@ -17,7 +18,7 @@ class importation
         virtual ~importation();
 
         // methode retour
-        bool execution() ;
+        bool execution(stockageDonnees* ) ;
         int nombreECUE() ;
         int nombreUEsimple() ;
         int entier(string);
@@ -42,7 +43,7 @@ class importation
         formation d_formation ;
         std::vector<uesimple> ensembleUEsimple;
         std::vector<ecue> ensembleECUE;
-
+        stockageDonnees* baseDeDonnees ;
 };
 
 #endif // IMPORTATION_H

@@ -46,8 +46,9 @@ std::ifstream importation::fichierOuvert( string nomFichier)
 }
 
 
-bool importation::execution()
+bool importation::execution(stockageDonnees* stockage)
 {
+    baseDeDonnees = stockage;
     string nomFichier =  recupererNomFichier() ;
     std::ifstream fichier = fichierOuvert(nomFichier);
 
@@ -117,16 +118,19 @@ void importation::affichageImport()
 
     affichageEcue();
 
+
 }
 
 void importation::ajoutUE( uesimple ue )
 {
     ensembleUEsimple.push_back(ue);
+    baseDeDonnees->ajouterUE(&ue);
 }
 
 void importation::ajoutECUE( ecue ecueTemporaire )
 {
     ensembleECUE.push_back(ecueTemporaire);
+    baseDeDonnees->ajouterECUE(&ecueTemporaire);
 }
 
 

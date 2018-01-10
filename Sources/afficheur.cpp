@@ -61,13 +61,13 @@ void afficheur::menuPrincipal()
 				menuFormations();
 				break;
 			case 4:
-				if(elementImport.execution())
+				if(elementImport.execution(&donneesMaquettes))
                     elementImport.affichageImport() ;
 				break;
 			case 5:
 				elementExport.ueAexporter(donneesMaquettes.listeUEs()) ;
                 elementExport.ecueAexporter(donneesMaquettes.listeECUEs()) ;
-                //elementExport.mettreFormation(*donneesMaquettes.formationIndice(0)) ;
+                elementExport.mettreFormation(*donneesMaquettes.formationIndice(0)) ;
                 elementExport.execution();
 				break;
 			default:
