@@ -39,12 +39,14 @@ bool exportation::creationFichier( bool fichierExiste, string nomFichier)
 
 // méthode modificateur
 
-void exportation::ueAexporter( std::vector <uesimple> listeUE )
+void exportation::ueAexporter( std::vector <uesimple*> listeUE )
 {
+
     for (int i =0 ; i < listeUE.size() ; i++)
     {
         ensembleUEsimple.push_back(listeUE.at(i)) ;
     }
+
 }
 
 
@@ -53,7 +55,7 @@ void exportation::mettreFormation(formation formationParametre)
     d_formation = formationParametre ;
 }
 
-void exportation::ecueAexporter( std::vector <ecue> listeECUE )
+void exportation::ecueAexporter( std::vector <ecue*> listeECUE )
 {
     for (int i =0 ; i < listeECUE.size() ; i++)
     {
@@ -82,14 +84,14 @@ void exportation::execution()
         for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
         {
             fichier << "1 ";
-            ensembleUEsimple.at(i).afficher(fichier);
+            ensembleUEsimple.at(i)->afficher(fichier);
         }
 
         if (ensembleECUE.size()>0)fichier <<endl<< "Liste ECUEs : " <<endl;
         for ( int i = 0 ; i < ensembleECUE.size() ; i++)
         {
             fichier << "2 ";
-            ensembleECUE.at(i).afficher(fichier);
+            ensembleECUE.at(i)->afficher(fichier);
         }
 
         fichier.close();

@@ -1,10 +1,19 @@
 #include <iostream>
-#include "../Headers/uesimple.h"
-#include "../Headers/importation.h"
-#include "../Headers/exportation.h"
+#include "../Headers/afficheur.h"
+
+//#include "../Headers/uesimple.h"
+//#include "../Headers/importation.h"
+//#include "../Headers/exportation.h"
 
 int main()
 {
+
+    afficheur test;
+	test.menuPrincipal();
+
+
+
+/*
 
     importation importa{} ;
 
@@ -12,7 +21,7 @@ int main()
         importa.affichageImport() ;
 
 
-/*
+
 
     uesimple ues1{ "codeUe", "nomUe", 1, 100, 7, 6, 5};
     ues1.afficher(std::cout);

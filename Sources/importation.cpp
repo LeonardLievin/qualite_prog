@@ -15,9 +15,9 @@ int importation::nombreECUE()
     return ensembleUEsimple.size();
 }
 
-ecue* importation::ecueAuRang( int rang)
+ecue importation::ecueAuRang( int rang)
 {
-    ensembleECUE.at(rang) ;
+    return ensembleECUE.at(rang) ;
 }
 
 int importation::nombreUEsimple()
@@ -25,9 +25,9 @@ int importation::nombreUEsimple()
     return ensembleUEsimple.size();
 }
 
-uesimple* importation::ueSimpleAuRang( int rang)
+uesimple importation::ueSimpleAuRang( int rang)
 {
-    ensembleUEsimple.at(rang) ;
+    return ensembleUEsimple.at(rang) ;
 }
 
 string importation::recupererNomFichier ()
@@ -90,10 +90,12 @@ int importation::entier( string caractere)
 
 void importation::affichageUeSimple()
 {
-     if(nombreUEsimple()>0)cout << "Liste des UEs simples : "<<endl;
+    if(nombreUEsimple()>0)cout << "Liste des UEs simples : "<<endl;
+
     for ( int i =0 ; i< nombreUEsimple() ; i++)
     {
-        ueSimpleAuRang(i)->afficher(std::cout);
+
+        ueSimpleAuRang(i).afficher(std::cout);
     }
 }
 
@@ -103,7 +105,7 @@ void importation::affichageEcue()
     if(nombreECUE()>0)cout << endl<<"Liste des ECUEs simples : "<<endl;
     for ( int i =0 ; i< nombreECUE() ; i++)
     {
-        ecueAuRang(i)->afficher(std::cout);
+        ecueAuRang(i).afficher(std::cout);
     }
 }
 
@@ -119,9 +121,7 @@ void importation::affichageImport()
 
 void importation::ajoutUE( uesimple ue )
 {
-
     ensembleUEsimple.push_back(ue);
-
 }
 
 void importation::ajoutECUE( ecue ecueTemporaire )
@@ -182,6 +182,7 @@ void importation::affichageLigne( string ligne)
         heure_td = atoi(decoupageMot[5].c_str()) ;
         heure_tp = atoi(decoupageMot[6].c_str()) ;
         ecue ecueTemporaire {code_matiere,intitule,coefficient,heure_cours, heure_td, heure_tp} ;
+
         ajoutECUE(ecueTemporaire) ;
     }
     else if (type == "1")
@@ -190,8 +191,9 @@ void importation::affichageLigne( string ligne)
         heure_cours = atoi(decoupageMot[5].c_str()) ;
         heure_td = atoi(decoupageMot[6].c_str()) ;
         heure_tp = atoi(decoupageMot[7].c_str()) ;
+
         uesimple ueTemporaire {code_matiere,intitule,coefficient,ects,heure_cours, heure_td, heure_tp};
-         ajoutUE(ueTemporaire) ;
+        ajoutUE(ueTemporaire) ;
     }
 
 }

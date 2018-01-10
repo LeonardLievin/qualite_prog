@@ -24,8 +24,8 @@ class importation
         string recupererNomFichier () ;
         string recupererLigne(std::vector<string>) ;
         std::ifstream fichierOuvert(string) ;
-        uesimple* ueSimpleAuRang( int ) ;
-        ecue* ecueAuRang( int ) ;
+        uesimple ueSimpleAuRang( int ) ;
+        ecue ecueAuRang( int ) ;
 
         // methode modificateur
         void affichageLigne(string) ;

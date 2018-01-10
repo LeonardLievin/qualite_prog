@@ -31,6 +31,8 @@ void uesimple::afficher_UE(std::ostream &ost) const{
 
 // méthode abstraite
 void uesimple::afficher(std::ostream &ost) const{
+
+
     matiere::afficher(ost);
     afficher_UE(ost) ;
     ecue::afficher_Ecue(ost);

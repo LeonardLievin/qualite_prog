@@ -22,14 +22,14 @@ class exportation
 
         // methode modificateur
         void execution();
-        void ueAexporter( std::vector<uesimple> ) ;
-        void ecueAexporter( std::vector<ecue> ) ;
+        void ueAexporter( std::vector<uesimple*> ) ;
+        void ecueAexporter( std::vector<ecue*> ) ;
         void mettreFormation( formation);
 
     protected:
     private:
-        std::vector<uesimple> ensembleUEsimple;
-        std::vector<ecue> ensembleECUE;
+        std::vector<uesimple*> ensembleUEsimple;
+        std::vector<ecue*> ensembleECUE;
         formation d_formation ;
 
 
