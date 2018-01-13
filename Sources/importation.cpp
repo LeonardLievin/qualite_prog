@@ -170,7 +170,6 @@ void importation::affichageLigne( string ligne)
         d_formation.mettreAnneeNiveau(entier(decoupageMot.at(3))) ;
 
         semestre semestreTemporaire{entier(decoupageMot.at(5)) } ;
-//        d_formation.mettreSemestre(semestreTemporaire) ;
 
     }
     else if (type == "2" || type == "1")
@@ -186,7 +185,6 @@ void importation::affichageLigne( string ligne)
         heure_td = atoi(decoupageMot[5].c_str()) ;
         heure_tp = atoi(decoupageMot[6].c_str()) ;
         ecue ecueTemporaire {code_matiere,intitule,coefficient,heure_cours, heure_td, heure_tp} ;
-
         ajoutECUE(ecueTemporaire) ;
     }
     else if (type == "1")

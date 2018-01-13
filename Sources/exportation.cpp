@@ -51,12 +51,12 @@ void exportation::ueAexporter( std::vector <uesimple*> listeUE )
 
 void exportation::uechoixAexporter( std::vector <uechoix*> listeUE )
 {
-
+/*
     for (int i =0 ; i < listeUE.size() ; i++)
     {
         ensembleUEchoix.push_back(listeUE.at(i)) ;
     }
-
+*/
 }
 void exportation::uecomposeAexporter( std::vector <uecompose*> listeUE )
 {
@@ -97,25 +97,33 @@ void exportation::execution()
     if(fichier && creerFichier)
     {
 
-        if(ensembleFormation.empty() && ensembleECUE.empty() && ensembleUEsimple.empty())
+        if(ensembleFormation.empty() && ensembleECUE.empty() && ensembleUEsimple.empty()
+            && ensembleUEcompose.empty() )
         {
             fichier << "!! Aucune valeur dans la base de données !! " <<endl ;
         }
-        else if(ensembleFormation.empty() && (!ensembleECUE.empty() || !ensembleUEsimple.empty()))
+        else if(ensembleFormation.empty() && (!ensembleECUE.empty() || !ensembleUEsimple.empty() || !ensembleUEcompose.empty()))
         {
             fichier << "Matière non incluses dans une formation : " << endl ;
             if (ensembleUEsimple.size()>0)fichier << "Liste UEs simples : " <<endl;
                 for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
                 {
-                    fichier << "1 ";
+                    //fichier << "1 ";
                     ensembleUEsimple.at(i)->afficher(fichier);
                 }
 
-            if (ensembleECUE.size()>0)fichier <<endl<< "Liste ECUEs : " <<endl;
+            if (ensembleECUE.size()>0 )fichier <<endl<< "Liste ECUEs : " <<endl;
                 for ( int i = 0 ; i < ensembleECUE.size() ; i++)
                 {
-                    fichier << "2 ";
-                    ensembleECUE.at(i)->afficher(fichier);
+                    //fichier << "2 ";
+                    if(ensembleECUE.at(i)->dansUeCompose())ensembleECUE.at(i)->afficher(fichier);
+                }
+
+            if (ensembleUEcompose.size()>0)fichier <<endl<< "Liste UE composées : " <<endl;
+                for ( int i = 0 ; i < ensembleUEcompose.size() ; i++)
+                {
+                    //fichier << "2 ";
+                    ensembleUEcompose.at(i)->afficher(fichier);
                 }
         }
         else
@@ -127,6 +135,8 @@ void exportation::execution()
                 fichier << "--------------------------------------------"<<endl;
             }
         }
+
+
         fichier.close();
         cout << "Fichier \""<< nomFichier << "\" créé" <<endl;
 

@@ -35,7 +35,6 @@ class exportation
     protected:
     private:
         std::vector<uesimple*> ensembleUEsimple;
-        std::vector<uechoix*> ensembleUEchoix;
         std::vector<uecompose*> ensembleUEcompose;
         std::vector<ecue*> ensembleECUE;
         std::vector<formation*> ensembleFormation;

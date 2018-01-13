@@ -58,6 +58,7 @@ class stockageDonnees
     	int trouverIndiceUEchoix() const;
     	int trouverIndiceUEcompose() const;
     	int trouverIndiceFormation() const;
+
     	vector<ecue*> listeECUEs() const ;
 		vector<uesimple*> listeUEs() const;
 		vector<uecompose*> listeUEcomposes() const;

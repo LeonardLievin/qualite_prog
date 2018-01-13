@@ -11,3 +11,10 @@ ue::~ue(){}
 int ue::ects() const{
     return d_ects;
 }
+
+
+// methode modificateur
+
+void ue::afficher(std::ostream &ost) const{
+	ost<<d_ects ;
+}

@@ -16,7 +16,7 @@ public:
     int numero() const;
     std::vector<matiere*> listeMatieres() const;
 
-     // méthode modificateur
+// méthode modificateur
     void ajouterMatiere(matiere* nouvelleMatiere);
     void supprimerMatiere(int i);
     void menuSupprimerMatiere();

@@ -46,9 +46,9 @@ void afficheur::menuPrincipal()
 	{
         cout << "MENU PRINCIPAL" << endl;
 		cout << "Que voulez-vous faire ? " << endl;
-		cout << "[2] Modifier les UEs simples." << endl;
-		cout << "[3] Modifier les UEs composees." << endl;
-		cout << "[1] Modifier les ECUEs." << endl;
+		cout << "[1] Modifier les UEs simples." << endl;
+		cout << "[2] Modifier les UEs composees." << endl;
+		cout << "[3] Modifier les ECUEs." << endl;
 		//cout << "[4] Modifier les UEs choix." << endl;
 		cout << "[4] Modifier les formations." << endl;
 		cout << "[5] Importer les donnees." << endl;

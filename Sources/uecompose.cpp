@@ -33,6 +33,7 @@ int uecompose::trouverEcue(std::string codeUe){
 
 // méthode modificateur
 void uecompose::ajouterEcue(ecue *nouvelleEcue){
+    nouvelleEcue->mettreDansUeCompose(true);
     d_ensemble_ecue.push_back(nouvelleEcue);
 }
 void uecompose::supprimerEcue(int index){
@@ -61,10 +62,13 @@ void uecompose::menuSupprimerEcue()
 
 void uecompose::afficher(std::ostream &ost) const{
 	matiere::afficher(ost);
+	ost << " ";
+	ue::afficher(ost);
 	ost<<std::endl;
+	std::cout << "------------"<< d_ensemble_ecue.size()  <<std::endl;
     for(int i = 0  ; i< d_ensemble_ecue.size() ; i++)
     {
-    	ost << "[" << i++ << "] ";
+    	ost << "[" << i+1 << "] ";
         d_ensemble_ecue.at(i)->afficher(ost);
 	}
 }

@@ -8,19 +8,21 @@ class ecue : public matiere
     public:
         // constructeur, destructeur
         ecue();
-        ecue(std::string code_matiere, std::string intitule,
-             int coefficient, int heure_cours, int heure_td, int heure_tp );
+        ecue(std::string, std::string, int , int, int, int );
         ~ecue();
 
         // méthodes retour
         int nombreHeureCours() const;
         int nombreHeureTp() const;
         int nombreHeureTd() const;
+        bool dansUeCompose() const;
+
 
         // méthodes void
-        void mettreNombreHeureCours (int heure_cours) ;
-        void mettreNombreHeureTp (int heure_tp) ;
-        void mettreNombreHeureTd (int heure_td) ;
+        void mettreNombreHeureCours (int ) ;
+        void mettreNombreHeureTp (int ) ;
+        void mettreNombreHeureTd (int) ;
+        void mettreDansUeCompose(bool);
         void afficher_Ecue(std::ostream& ost) const ;
 
         // méthodes abstraite
@@ -31,6 +33,7 @@ class ecue : public matiere
         int d_nombreHeureCours;
         int d_nombreHeureTd;
         int d_nombreHeureTp ;
+        bool d_dansUeCompose;
 
 };
 

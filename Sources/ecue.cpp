@@ -7,7 +7,9 @@ ecue::ecue() : matiere {}, d_nombreHeureCours{0}, d_nombreHeureTd{0}, d_nombreHe
 ecue::ecue( std::string code_matiere, std::string intitule, int coefficient, int heure_cours, int heure_td, int heure_tp ):
     matiere{code_matiere, intitule, coefficient}, d_nombreHeureCours{heure_cours},
     d_nombreHeureTd{heure_td}, d_nombreHeureTp{heure_tp}
-{}
+{
+    d_dansUeCompose = false ;
+}
 ecue::~ecue()
 {}
 
@@ -26,6 +28,10 @@ int ecue::nombreHeureTd() const
 {
     return d_nombreHeureTd;
 }
+bool ecue::dansUeCompose() const
+{
+    return d_dansUeCompose;
+}
 
 // méthode void
 void ecue::mettreNombreHeureCours (int heure_cours)
@@ -40,6 +46,11 @@ void ecue::mettreNombreHeureTd (int heure_td)
 {
     d_nombreHeureTd = heure_td ;
 }
+void ecue::mettreDansUeCompose(bool reponse)
+{
+    d_dansUeCompose = reponse;
+}
+
 void ecue::afficher_Ecue(std::ostream& ost) const
 {
     ost<<" "<<nombreHeureCours()<<" "<<nombreHeureTd()<<" "<<nombreHeureTp()<<std::endl;
