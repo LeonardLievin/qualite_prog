@@ -9,6 +9,7 @@ class uecompose : public ue
 public:
     //constructeur, destructeur
     uecompose();
+    uecompose(std::string code_matiere, std::string intitule, int coefficient, int ects);
     ~uecompose();
 
     // méthode retour
@@ -18,6 +19,7 @@ public:
     // méthode modificateur
     void ajouterEcue(ecue*);
     void supprimerEcue(int );
+    void menuSupprimerEcue();
 
     // methode abstraite
     virtual void afficher(std::ostream &ost) const override;

@@ -170,7 +170,7 @@ void importation::affichageLigne( string ligne)
         d_formation.mettreAnneeNiveau(entier(decoupageMot.at(3))) ;
 
         semestre semestreTemporaire{entier(decoupageMot.at(5)) } ;
-        d_formation.mettreSemestre(semestreTemporaire) ;
+//        d_formation.mettreSemestre(semestreTemporaire) ;
 
     }
     else if (type == "2" || type == "1")

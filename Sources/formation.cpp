@@ -7,8 +7,12 @@ formation::formation()
 formation::formation(string domaine, string mention, string parcours, int annee, string niveau,
     int anneeNiveau, semestre semestreParametre):
         d_domaine{domaine}, d_mention{mention}, d_parcours{parcours}, d_annee{annee}, d_niveau{niveau},
-        d_anneeNiveau{anneeNiveau} , d_semestre{semestreParametre}
-{}
+        d_anneeNiveau{anneeNiveau}
+{
+    int numeroSemestre = semestreParametre.numero() ;
+    d_listeSemestres.push_back(new semestre(numeroSemestre));
+	d_listeSemestres.push_back(new semestre(numeroSemestre+1));
+}
 
 formation::~formation()
 {}
@@ -44,9 +48,8 @@ bool formation::existe() const
     return d_existe ;
 }
 
-semestre formation::semestreValeur() const
-{
-    return d_semestre;
+vector <semestre*> formation::listeSemestres() const{
+    return d_listeSemestres;
 }
 
 // méthode modificateur
@@ -70,14 +73,22 @@ void formation::mettreAnnee(int annee)
 {   d_annee = annee ; }
 
 
-void formation::mettreSemestre (semestre semestreParametre)
-{   d_semestre = semestreParametre ;}
 
 void formation::afficher(std::ostream &ost) const
 {
     if(d_domaine.size()>0)ost << "Domaine : " << d_domaine << endl;
     if(d_mention.size()>0)ost << "Mention : " << d_mention << endl;
     if(d_parcours.size()>0)ost << "Parcours : " << d_parcours << endl;
-    if(d_annee>1 && d_annee<2500)ost << "Année " << d_annee << " " <<d_niveau<<" "<<d_anneeNiveau<<" Semestre "<< d_semestre.numero()<< endl<<endl;
+    if(d_annee>1 && d_annee<2500)ost << "Année " << d_annee << " " <<d_niveau<<" "<<d_anneeNiveau<<endl;
+    for (int i = 0; i < listeSemestres().size(); i++)
+	{
+		listeSemestres()[i]->afficher(ost);
+		ost << endl;
+	}
+}
 
+
+semestre* formation::semestreNumero(int numeroSemestre) const
+{
+	return d_listeSemestres[numeroSemestre];
 }

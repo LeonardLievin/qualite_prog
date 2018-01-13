@@ -49,10 +49,30 @@ void exportation::ueAexporter( std::vector <uesimple*> listeUE )
 
 }
 
-
-void exportation::mettreFormation(formation formationParametre)
+void exportation::uechoixAexporter( std::vector <uechoix*> listeUE )
 {
-    d_formation = formationParametre ;
+
+    for (int i =0 ; i < listeUE.size() ; i++)
+    {
+        ensembleUEchoix.push_back(listeUE.at(i)) ;
+    }
+
+}
+void exportation::uecomposeAexporter( std::vector <uecompose*> listeUE )
+{
+
+    for (int i =0 ; i < listeUE.size() ; i++)
+    {
+        ensembleUEcompose.push_back(listeUE.at(i)) ;
+    }
+
+}
+
+
+void exportation::mettreFormation(std::vector <formation*> listeFormation)
+{
+    for (int i = 0 ; i < listeFormation.size() ; i ++)
+        ensembleFormation.push_back(listeFormation.at(i)) ;
 }
 
 void exportation::ecueAexporter( std::vector <ecue*> listeECUE )
@@ -77,23 +97,36 @@ void exportation::execution()
     if(fichier && creerFichier)
     {
 
-        d_formation.afficher(fichier);
-
-
-        if (ensembleUEsimple.size()>0)fichier << "Liste UEs simples : " <<endl;
-        for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
+        if(ensembleFormation.empty() && ensembleECUE.empty() && ensembleUEsimple.empty())
         {
-            fichier << "1 ";
-            ensembleUEsimple.at(i)->afficher(fichier);
+            fichier << "!! Aucune valeur dans la base de données !! " <<endl ;
         }
-
-        if (ensembleECUE.size()>0)fichier <<endl<< "Liste ECUEs : " <<endl;
-        for ( int i = 0 ; i < ensembleECUE.size() ; i++)
+        else if(ensembleFormation.empty() && (!ensembleECUE.empty() || !ensembleUEsimple.empty()))
         {
-            fichier << "2 ";
-            ensembleECUE.at(i)->afficher(fichier);
-        }
+            fichier << "Matière non incluses dans une formation : " << endl ;
+            if (ensembleUEsimple.size()>0)fichier << "Liste UEs simples : " <<endl;
+                for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
+                {
+                    fichier << "1 ";
+                    ensembleUEsimple.at(i)->afficher(fichier);
+                }
 
+            if (ensembleECUE.size()>0)fichier <<endl<< "Liste ECUEs : " <<endl;
+                for ( int i = 0 ; i < ensembleECUE.size() ; i++)
+                {
+                    fichier << "2 ";
+                    ensembleECUE.at(i)->afficher(fichier);
+                }
+        }
+        else
+        {
+            for (int j = 0 ; j < ensembleFormation.size() ; j++)
+            {
+                fichier << "--------------------------------------------"<<endl;
+                ensembleFormation.at(j)->afficher(fichier);
+                fichier << "--------------------------------------------"<<endl;
+            }
+        }
         fichier.close();
         cout << "Fichier \""<< nomFichier << "\" créé" <<endl;
 

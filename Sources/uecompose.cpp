@@ -5,6 +5,9 @@ uecompose::uecompose()
 {}
 uecompose::~uecompose()
 {}
+uecompose::uecompose(std::string code_matiere, std::string intitule, int coefficient, int ects):
+    ue{code_matiere, intitule, coefficient , ects}
+{}
 
 // méthode retour
 std::vector < ecue*> uecompose::ensembleEcue() const
@@ -39,7 +42,29 @@ void uecompose::supprimerEcue(int index){
     d_ensemble_ecue.pop_back();
 }
 
+void uecompose::menuSupprimerEcue()
+{
+	int choix = -1;
+	while (choix =! 0 && d_ensemble_ecue.size() != 0)
+	{
+		std::cout << "Choisissez la matiere a supprimer : " << std::endl;
+		afficher(std::cout);
+		std::cout << "[0] Quitter." << std::endl;
+		std::cin >> choix;
+		if (choix != 0)
+		{
+			supprimerEcue(choix-1);
+		}
+	}
+}
+
+
 void uecompose::afficher(std::ostream &ost) const{
-    for(auto pointeurMatiere : d_ensemble_ecue)
-        pointeurMatiere->afficher(ost);
+	matiere::afficher(ost);
+	ost<<std::endl;
+    for(int i = 0  ; i< d_ensemble_ecue.size() ; i++)
+    {
+    	ost << "[" << i++ << "] ";
+        d_ensemble_ecue.at(i)->afficher(ost);
+	}
 }

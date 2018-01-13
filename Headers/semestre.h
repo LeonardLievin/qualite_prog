@@ -1,7 +1,8 @@
 #ifndef SEMESTRE_H
 #define SEMESTRE_H
 
-#include "ue.h"
+#include "matiere.h"
+#include "vector"
 
 class semestre
 {
@@ -13,11 +14,18 @@ public:
 
     // méthode retour
     int numero() const;
-    std::vector<ue*> mettreUEs() const;
+    std::vector<matiere*> listeMatieres() const;
+
+     // méthode modificateur
+    void ajouterMatiere(matiere* nouvelleMatiere);
+    void supprimerMatiere(int i);
+    void menuSupprimerMatiere();
+    void afficher(std::ostream &ost) const;
+
 
 private:
     int d_numero ;
-    std::vector<ue*> d_ue ;
+    std::vector<matiere*> d_listeMatieres ;
 };
 
 #endif // SEMESTRE_H

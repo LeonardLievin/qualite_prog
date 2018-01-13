@@ -4,6 +4,8 @@
 #include <fstream>
 
 #include "uesimple.h"
+#include "uechoix.h"
+#include "uecompose.h"
 #include "formation.h"
 
 using std::cin;
@@ -22,15 +24,21 @@ class exportation
 
         // methode modificateur
         void execution();
+
         void ueAexporter( std::vector<uesimple*> ) ;
         void ecueAexporter( std::vector<ecue*> ) ;
-        void mettreFormation( formation);
+        void uechoixAexporter( std::vector<uechoix*> ) ;
+        void uecomposeAexporter( std::vector<uecompose*> ) ;
+
+        void mettreFormation( std::vector<formation*>);
 
     protected:
     private:
         std::vector<uesimple*> ensembleUEsimple;
+        std::vector<uechoix*> ensembleUEchoix;
+        std::vector<uecompose*> ensembleUEcompose;
         std::vector<ecue*> ensembleECUE;
-        formation d_formation ;
+        std::vector<formation*> ensembleFormation;
 
 
 };
