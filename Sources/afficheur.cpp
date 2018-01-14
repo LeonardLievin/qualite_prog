@@ -9,7 +9,8 @@ void saisirEntierEntreDeuxBornes(int borneInferieur, int borneSuperieur, int &ch
 	cin >> choixUtilisateur;
 	while (choixUtilisateur < borneInferieur || choixUtilisateur > borneSuperieur)
 	{
-		cout << "Votre choix doit etre compris entre " << borneInferieur << " et " << borneSuperieur << ". Veuillez saisir un entier correct : ";
+		cout << "Votre choix doit etre compris entre " << borneInferieur << " et "
+		<< borneSuperieur << ". Veuillez saisir un entier correct : ";
 		cin >> choixUtilisateur;
 	}
 }
@@ -49,10 +50,11 @@ void afficheur::menuPrincipal()
 		cout << "[1] Modifier les UEs simples." << endl;
 		cout << "[2] Modifier les UEs composees." << endl;
 		cout << "[3] Modifier les ECUEs." << endl;
-		//cout << "[4] Modifier les UEs choix." << endl;
-		cout << "[4] Modifier les formations." << endl;
-		cout << "[5] Importer les donnees." << endl;
-		cout << "[6] Exporter les donnees." << endl;
+        cout << "[4] Modifier les UEs choix." << endl;
+		cout << "[5] Modifier les formations." << endl;
+		cout << "[6] Importer les donnees." << endl;
+		cout << "[7] Exporter les donnees." << endl;
+
 		cout << "[0] Quitter." << endl;
 		saisirEntierEntreDeuxBornes(0,7,choixUtilisateur);
 		switch (choixUtilisateur)
@@ -66,31 +68,35 @@ void afficheur::menuPrincipal()
 			case 3:
 				menuECUEs();
 				break;
-			case 8:
-				//menuUEchoix();
+			case 4:
+				menuUEchoix();
 				break;
 
-			case 4:
+			case 5:
 				menuFormations();
 				break;
-			case 5:
+			case 6:
 				if(elementImport.execution(&donneesMaquettes))
                     elementImport.affichageImport() ;
 				break;
-			case 6:
+			case 7:
+                elementAexporter();
 
-				elementExport.ueAexporter(donneesMaquettes.listeUEs()) ;
-                elementExport.ecueAexporter(donneesMaquettes.listeECUEs()) ;
-
-                elementExport.uecomposeAexporter(donneesMaquettes.listeUEcomposes()) ;
-
-                elementExport.mettreFormation(donneesMaquettes.listeFormations()) ;
                 elementExport.execution();
 				break;
 			default:
 				break;
 		}
 	}
+}
+
+void afficheur::elementAexporter()
+{
+    elementExport.ueAexporter(donneesMaquettes.listeUEs()) ;
+    elementExport.ecueAexporter(donneesMaquettes.listeECUEs()) ;
+    elementExport.uecomposeAexporter(donneesMaquettes.listeUEcomposes()) ;
+    elementExport.uechoixAexporter(donneesMaquettes.listeUEchoix()) ;
+    elementExport.mettreFormation(donneesMaquettes.listeFormations()) ;
 }
 
 void afficheur::menuECUEs()
@@ -474,20 +480,27 @@ uecompose* afficheur::nouvelleUEcomposeaCreer()
 	return nouvelleUE;
 }
 
+
+
 uechoix* afficheur::nouvelleUEchoixaCreer()
 {
 	std::string codeMatiere, intitule;
 	int coefficient;
-	ecue* premierChoix, secondChoix;
+	ecue* premierChoix;
+	ecue* secondChoix;
 	saisirDonneesMatiere(codeMatiere, intitule, coefficient);
 	cout << endl;
 	uechoix *nouvelleEcue = new uechoix{codeMatiere, intitule, coefficient};
 
-	//premierChoix = saisirDonneesEcueChoix() ;
-	//secondChoix = saisirDonneesEcueChoix() ;
+    cout << "Saisir le premier choix "<<endl;
+	premierChoix = nouvelleECUEaCreer() ;
 
+	cout << "Saisir le second choix "<<endl;
+	secondChoix = nouvelleECUEaCreer() ;
 
 	//ajout ecue dans uechoix
+	nouvelleEcue->mettreEcue(premierChoix);
+	nouvelleEcue->mettreEcue(secondChoix);
 
 	return nouvelleEcue;
 }
@@ -515,7 +528,7 @@ formation* afficheur::nouvelleFormationaCreer()
     cin >> std::ws;
     getline(cin,niveau);
     cout << endl;
-    cout << "Entrez l'annee d'étude : ";
+    cout << "Entrez l'annee d'etude : ";
     cin >> anneeNiveau;
     cout << endl;
     semestreInt = anneeNiveau*2-1;
@@ -585,7 +598,7 @@ void afficheur::menuAjouterUneUEchoix()
 	while (choixUtilisateur != 0 && choixUtilisateur != 1)
 	{
 		ueAAjouter = nouvelleUEchoixaCreer();
-		cout << "Confirmez vous la creation de l'UE : " << endl;
+		cout << "Confirmez vous la creation de l'UE choix : " << endl;
 		ueAAjouter->afficher(cout);
 		cout << "[1] Oui." << endl;
 		cout << "[2] Non je veux en creer une autre." << endl;
@@ -611,7 +624,7 @@ void afficheur::menuAjouterUneUEcompose()
 	while (choixUtilisateur != 0 && choixUtilisateur != 1)
 	{
 		ueAAjouter = nouvelleUEcomposeaCreer();
-		cout << "Confirmez vous la creation de l'UE : " << endl;
+		cout << "Confirmez vous la creation de l'UE compose : " << endl;
 		ueAAjouter->afficher(std::cout);
 		cout << "[1] Oui." << endl;
 		cout << "[2] Non je veux en creer une autre." << endl;

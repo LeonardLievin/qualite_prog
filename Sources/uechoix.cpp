@@ -11,7 +11,7 @@ uechoix::uechoix(std::string code_matiere, std::string intitule, int coefficient
 uechoix::~uechoix(){}
 
 // méthode modificateur
-void uechoix::mettreUe(ecue* nouvelleEcue)
+void uechoix::mettreEcue(ecue* nouvelleEcue)
 {
     d_choixDisponibleEcue.push_back(nouvelleEcue);
 }
@@ -33,10 +33,13 @@ std::vector <ecue*> uechoix::ecueDisponible() const
 // méthode abstraite
 void uechoix::afficher(std::ostream& ost) const
 {
+    matiere::afficher(ost);
+    ost << endl << "Choix entre les matières : "<<endl;
     for (unsigned int i = 0 ; i <d_choixDisponibleEcue.size() ; i++ )
     {
-        cout << " --------- affichage"<<endl;
+
         d_choixDisponibleEcue.at(i)->afficher(ost);
+        if (i!=d_choixDisponibleEcue.size()-1)ost<<" ------ ou ------ "<<endl;
     }
 }
 

@@ -55,6 +55,8 @@ class afficheur
 		void menuAjouterUEDansFormation(int indiceFormation);
 		void menuSupprimerUEDansFormation(int indiceFormation);
 
+		void elementAexporter() ;
+
 
     private:
     	stockageDonnees donneesMaquettes;

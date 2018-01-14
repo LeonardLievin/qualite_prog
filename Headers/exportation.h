@@ -36,6 +36,7 @@ class exportation
     private:
         std::vector<uesimple*> ensembleUEsimple;
         std::vector<uecompose*> ensembleUEcompose;
+        std::vector<uechoix*> ensembleUEchoix;
         std::vector<ecue*> ensembleECUE;
         std::vector<formation*> ensembleFormation;
 

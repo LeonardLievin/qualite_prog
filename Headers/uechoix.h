@@ -17,7 +17,7 @@ public:
     ~uechoix();
 
     // méthode modificateur
-    void mettreUe(ecue*);
+    void mettreEcue(ecue*);
     void supprimerEcue(int);
 
     // méthode retour

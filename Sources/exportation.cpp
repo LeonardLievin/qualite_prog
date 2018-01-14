@@ -11,7 +11,7 @@ exportation::~exportation()
 string exportation::definirNomFichier()
 {
     string fichier;
-    cout << "Choisir nom du fichier à créer : ";
+    cout << "Choisir nom du fichier à creer : ";
     cin >> fichier ;
     return fichier ;
 }
@@ -27,7 +27,7 @@ bool exportation::creationFichier( bool fichierExiste, string nomFichier)
     if (fichierExiste)
     {
         string reponse ;
-        cout << "Le fichier \""<<nomFichier<<"\" existe déjà" <<endl ;
+        cout << "Le fichier \""<<nomFichier<<"\" existe deja" <<endl ;
         cout << "Voulez vous le remplacer (oui ou non) ? " <<endl ;
         cin >> reponse ;
         if (reponse == "oui") return true ;
@@ -51,12 +51,12 @@ void exportation::ueAexporter( std::vector <uesimple*> listeUE )
 
 void exportation::uechoixAexporter( std::vector <uechoix*> listeUE )
 {
-/*
+
     for (int i =0 ; i < listeUE.size() ; i++)
     {
         ensembleUEchoix.push_back(listeUE.at(i)) ;
     }
-*/
+
 }
 void exportation::uecomposeAexporter( std::vector <uecompose*> listeUE )
 {
@@ -97,14 +97,16 @@ void exportation::execution()
     if(fichier && creerFichier)
     {
 
-        if(ensembleFormation.empty() && ensembleECUE.empty() && ensembleUEsimple.empty()
+        if(ensembleFormation.empty() && ensembleECUE.empty() && ensembleUEsimple.empty() && ensembleUEchoix.empty()
             && ensembleUEcompose.empty() )
         {
-            fichier << "!! Aucune valeur dans la base de données !! " <<endl ;
+            fichier << "!! Aucune valeur dans la base de donnees !! " <<endl ;
         }
-        else if(ensembleFormation.empty() && (!ensembleECUE.empty() || !ensembleUEsimple.empty() || !ensembleUEcompose.empty()))
+        else if(ensembleFormation.empty() && (!ensembleUEchoix.empty() ||
+                    !ensembleECUE.empty() || !ensembleUEsimple.empty() ||
+                    !ensembleUEcompose.empty()))
         {
-            fichier << "Matière non incluses dans une formation : " << endl ;
+            fichier << "Matiere non incluses dans une formation : " << endl ;
             if (ensembleUEsimple.size()>0)fichier << "Liste UEs simples : " <<endl;
                 for ( int i = 0 ; i < ensembleUEsimple.size() ; i++)
                 {
@@ -119,11 +121,17 @@ void exportation::execution()
                     if(ensembleECUE.at(i)->dansUeCompose())ensembleECUE.at(i)->afficher(fichier);
                 }
 
-            if (ensembleUEcompose.size()>0)fichier <<endl<< "Liste UE composées : " <<endl;
+            if (ensembleUEcompose.size()>0)fichier <<endl<< "Liste UE composees : " <<endl;
                 for ( int i = 0 ; i < ensembleUEcompose.size() ; i++)
                 {
                     //fichier << "2 ";
                     ensembleUEcompose.at(i)->afficher(fichier);
+                }
+            if (ensembleUEchoix.size()>0)fichier <<endl<< "Liste UE choix : " <<endl;
+                for ( int i = 0 ; i < ensembleUEchoix.size() ; i++)
+                {
+                    //fichier << "2 ";
+                    ensembleUEchoix.at(i)->afficher(fichier);
                 }
         }
         else
@@ -141,11 +149,11 @@ void exportation::execution()
   //      fichier << "";
 
         fichier.close();
-        cout << "Fichier \""<< nomFichier << "\" créé" <<endl;
+        cout << "Fichier \""<< nomFichier << "\" cree" <<endl;
 
     }
 
     else
-        cout << "Rien n'a été exporté" << endl;
+        cout << "Rien n'a ete exporte" << endl;
 
 }
