@@ -476,14 +476,14 @@ uecompose* afficheur::nouvelleUEcomposeaCreer()
 
 uechoix* afficheur::nouvelleUEchoixaCreer()
 {
-	std::string codeMatiere, intitule;
+/*	std::string codeMatiere, intitule;
 	int coefficient, ects;
 	saisirDonneesMatiere(codeMatiere, intitule, coefficient);
 	cout << endl;
 	cout << "Entrez le nombre d'ECTS : ";
 	cin >> ects;
 	uechoix *nouvelleUE = new uechoix{codeMatiere, intitule, coefficient, ects};
-	return nouvelleUE;
+	return nouvelleUE;*/
 }
 
 formation* afficheur::nouvelleFormationaCreer()

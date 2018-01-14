@@ -56,11 +56,22 @@ void ecue::afficher_Ecue(std::ostream& ost) const
     ost<<" "<<nombreHeureCours()<<" "<<nombreHeureTd()<<" "<<nombreHeureTp()<<std::endl;
 }
 
+
 // méthode abstraite
-int ecue::nombreTotalHeure() const
+
+int ecue::heureCours() const
 {
-    return d_nombreHeureCours + d_nombreHeureTd + d_nombreHeureTp;
+    return nombreHeureCours() ;
 }
+int ecue::heureTd() const
+{
+    return nombreHeureTd() ;
+}
+int ecue::heureTp() const
+{
+    return nombreHeureTp() ;
+}
+
 
 void ecue::afficher(std::ostream& ost) const
 {

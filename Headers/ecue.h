@@ -27,7 +27,11 @@ class ecue : public matiere
 
         // méthodes abstraite
         virtual void afficher(std::ostream& ost) const override;
-        virtual int nombreTotalHeure() const override;
+
+        virtual int heureCours() const override;
+        virtual int heureTd() const override;
+        virtual int heureTp() const override;
+
 
     private:
         int d_nombreHeureCours;

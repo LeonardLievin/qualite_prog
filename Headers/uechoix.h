@@ -20,7 +20,7 @@ public:
 
     // méthode abstraite
     virtual void afficher(std::ostream&) const override;
-    virtual int nombreTotalHeure() const override;
+//    virtual int nombreTotalHeure() const override;
 
 private:
     std::vector <ue*> d_choixDisponibleUe;

@@ -23,7 +23,8 @@ public:
 
     // methode abstraite
     virtual void afficher(std::ostream &ost) const override;
-    virtual int nombreTotalHeure() const override;
+    virtual int heureCours() const override;
+    //virtual int nombreTotalHeure() const override;
 
 private:
     std::vector < ecue* > d_ensemble_ecue ;

@@ -14,8 +14,55 @@ std::vector<matiere*> semestre::listeMatieres() const
 {
     return d_listeMatieres;
 }
+int semestre::totalCoefficient() const
+{
+    int total = 0 ;
+    for (int i = 0 ; i < d_listeMatieres.size() ;  i++ )
+    {
+        total += d_listeMatieres.at(i)->coefficient();
+    }
+    return total ;
+}
 
+int semestre::totalHeureCours() const
+{
+    int total = 0 ;
+    for (int i = 0 ; i < d_listeMatieres.size() ;  i++ )
+    {
+        total += d_listeMatieres.at(i)->heureCours();
+    }
+    return total ;
+}
+int semestre::totalHeureTd() const
+{
+    int total = 0 ;
+    for (int i = 0 ; i < d_listeMatieres.size() ;  i++ )
+    {
+        total += d_listeMatieres.at(i)->heureTd();
+    }
+    return total ;
+}
+int semestre::totalHeureTp() const
+{
+    int total = 0 ;
+    for (int i = 0 ; i < d_listeMatieres.size() ;  i++ )
+    {
+        total += d_listeMatieres.at(i)->heureTp();
+    }
+    return total ;
+}
 
+int semestre::totalEcts() const
+{
+    int total = 0 ;
+    for (int i = 0 ; i < d_listeMatieres.size() ;  i++ )
+    {
+        total += d_listeMatieres.at(i)->ects();
+    }
+    return total ;
+}
+
+// méthode modificateur
 void semestre::ajouterMatiere(matiere* nouvelleMatiere)
 {
 	d_listeMatieres.push_back(nouvelleMatiere);
@@ -36,6 +83,12 @@ void semestre::afficher(std::ostream &ost) const
 		ost << "[" << i+1 << "]";
 		listeMatieres()[i]->afficher(ost);
 	}
+	ost << "Total coefficient : "<< totalCoefficient() <<std::endl ;
+	ost << "Total heure de cours : " << totalHeureCours() <<std::endl;
+	ost << "Total heure de TD : "<< totalHeureTd() <<std::endl ;
+	ost << "Total heure de TP : "<< totalHeureTp() <<std::endl ;
+	ost << "Total ECTS : "<< totalEcts()  ;
+
 }
 
 void semestre::menuSupprimerMatiere()

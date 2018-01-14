@@ -136,6 +136,9 @@ void exportation::execution()
             }
         }
 
+//        int totalCoefficientMaquette = totalCoefficient() ;
+
+  //      fichier << "";
 
         fichier.close();
         cout << "Fichier \""<< nomFichier << "\" créé" <<endl;

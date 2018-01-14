@@ -14,12 +14,9 @@ std::vector < ecue*> uecompose::ensembleEcue() const
 {
     return d_ensemble_ecue;
 }
-int uecompose::nombreTotalHeure() const{
-    int nombreHeure = 0;
-    for(auto pointeurMatiere : d_ensemble_ecue)
-        nombreHeure += pointeurMatiere->nombreTotalHeure();
-    return nombreHeure;
-}
+
+
+
 int uecompose::trouverEcue(std::string codeUe){
     int index = 0;
     while(index < d_ensemble_ecue.size()){
@@ -59,6 +56,16 @@ void uecompose::menuSupprimerEcue()
 	}
 }
 
+
+int uecompose::heureCours() const
+{
+    int total = 0 ;
+    for(int i = 0  ; i< d_ensemble_ecue.size() ; i++)
+    {
+        total += d_ensemble_ecue.at(i)->nombreHeureCours();
+	}
+	return total ;
+}
 
 void uecompose::afficher(std::ostream &ost) const{
 	matiere::afficher(ost);

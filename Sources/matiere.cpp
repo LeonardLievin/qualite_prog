@@ -27,3 +27,20 @@ void matiere::afficher(std::ostream& ost) const
 {
     ost << d_code << " " << d_intitule << " "<< d_coefficient ;
 }
+
+int matiere::heureCours() const
+{
+    return 0;
+}
+int matiere::heureTd() const
+{
+    return 0;
+}
+int matiere::heureTp() const
+{
+    return 0;
+}
+int matiere::ects() const
+{
+    return 0;
+}

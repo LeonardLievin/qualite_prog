@@ -17,7 +17,8 @@ public:
 
     // méthode abstraite
     virtual void afficher(std::ostream& ost)const ;
-    virtual int nombreTotalHeure() const =0 ;
+    virtual int heureCours() const = 0;
+    //virtual int nombreTotalHeure() const =0 ;
 
 private:
     int d_ects;

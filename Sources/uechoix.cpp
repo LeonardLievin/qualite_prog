@@ -39,6 +39,7 @@ void uechoix::afficher(std::ostream& ost) const
     }
 }
 
+/*
 int uechoix::nombreTotalHeure() const
 {
     int somme = 0 ;
@@ -48,3 +49,4 @@ int uechoix::nombreTotalHeure() const
     }
     return somme;
 }
+*/

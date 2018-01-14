@@ -22,8 +22,11 @@ public:
     void setCoefficient(int coefficient);
 
     // méthode abstraite
-    virtual int nombreTotalHeure() const = 0;
     virtual void afficher(std::ostream& ost) const;
+    virtual int heureCours() const  ;
+    virtual int heureTd() const ;
+    virtual int heureTp() const ;
+    virtual int ects() const ;
 
 
 private:

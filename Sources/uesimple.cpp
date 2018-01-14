@@ -38,6 +38,19 @@ void uesimple::afficher(std::ostream &ost) const{
     ecue::afficher_Ecue(ost);
 }
 
+int uesimple::heureCours() const
+{
+    return ecue::heureCours() ;
+}
+int uesimple::heureTd() const
+{
+    return ecue::heureTd() ;
+}
+int uesimple::heureTp() const
+{
+    return ecue::heureTp() ;
+}
+
 
 // surcharge
 std::ostream& operator<<(std::ostream& ost, const uesimple &ue){
