@@ -476,14 +476,20 @@ uecompose* afficheur::nouvelleUEcomposeaCreer()
 
 uechoix* afficheur::nouvelleUEchoixaCreer()
 {
-/*	std::string codeMatiere, intitule;
-	int coefficient, ects;
+	std::string codeMatiere, intitule;
+	int coefficient;
+	ecue* premierChoix, secondChoix;
 	saisirDonneesMatiere(codeMatiere, intitule, coefficient);
 	cout << endl;
-	cout << "Entrez le nombre d'ECTS : ";
-	cin >> ects;
-	uechoix *nouvelleUE = new uechoix{codeMatiere, intitule, coefficient, ects};
-	return nouvelleUE;*/
+	uechoix *nouvelleEcue = new uechoix{codeMatiere, intitule, coefficient};
+
+	//premierChoix = saisirDonneesEcueChoix() ;
+	//secondChoix = saisirDonneesEcueChoix() ;
+
+
+	//ajout ecue dans uechoix
+
+	return nouvelleEcue;
 }
 
 formation* afficheur::nouvelleFormationaCreer()
@@ -580,7 +586,7 @@ void afficheur::menuAjouterUneUEchoix()
 	{
 		ueAAjouter = nouvelleUEchoixaCreer();
 		cout << "Confirmez vous la creation de l'UE : " << endl;
-		ueAAjouter->afficher(std::cout);
+		ueAAjouter->afficher(cout);
 		cout << "[1] Oui." << endl;
 		cout << "[2] Non je veux en creer une autre." << endl;
 		cout << "[0] Quitter sans la creer." << endl;

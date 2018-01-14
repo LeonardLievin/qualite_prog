@@ -3,39 +3,40 @@
 // constructeur, destructeur
 uechoix::uechoix(){}
 
-uechoix::uechoix(std::string code_matiere, std::string intitule, int coefficient, int ects):
-    ue{code_matiere, intitule, coefficient , ects},
-    d_choixDisponibleUe{}
+uechoix::uechoix(std::string code_matiere, std::string intitule, int coefficient):
+    matiere{code_matiere, intitule, coefficient },
+    d_choixDisponibleEcue{}
 {}
 
 uechoix::~uechoix(){}
 
 // méthode modificateur
-void uechoix::setUe(ue* nouvelleUe)
+void uechoix::mettreUe(ecue* nouvelleEcue)
 {
-    d_choixDisponibleUe.push_back(nouvelleUe);
+    d_choixDisponibleEcue.push_back(nouvelleEcue);
 }
 
-void uechoix::supprimerUe(int index)
+void uechoix::supprimerEcue(int index)
 {
-    d_choixDisponibleUe[index] = nullptr;
-    delete d_choixDisponibleUe[index];
-    d_choixDisponibleUe[index] = d_choixDisponibleUe[d_choixDisponibleUe.size()-1];
-    d_choixDisponibleUe.pop_back();
+    d_choixDisponibleEcue[index] = nullptr;
+    delete d_choixDisponibleEcue[index];
+    d_choixDisponibleEcue[index] = d_choixDisponibleEcue[d_choixDisponibleEcue.size()-1];
+    d_choixDisponibleEcue.pop_back();
 }
 
 // méthode retour
-std::vector <ue*> uechoix::ueDisponible() const
+std::vector <ecue*> uechoix::ecueDisponible() const
 {
-    return d_choixDisponibleUe;
+    return d_choixDisponibleEcue;
 }
 
 // méthode abstraite
 void uechoix::afficher(std::ostream& ost) const
 {
-    for (unsigned int i = 0 ; i <=d_choixDisponibleUe.size() ; i++ )
+    for (unsigned int i = 0 ; i <d_choixDisponibleEcue.size() ; i++ )
     {
-        d_choixDisponibleUe[i]->afficher(ost);
+        cout << " --------- affichage"<<endl;
+        d_choixDisponibleEcue.at(i)->afficher(ost);
     }
 }
 

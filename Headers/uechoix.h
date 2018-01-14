@@ -1,29 +1,34 @@
 #ifndef UECHOIX_H
 #define UECHOIX_H
 
-#include "ue.h"
+#include "ecue.h"
+#include <vector>
 
-class uechoix : public ue
+using std::cout;
+using std::endl;
+using std::cin;
+
+class uechoix : public matiere
 {
 public:
     // constructeur, destructeur
     uechoix();
-    uechoix(std::string , std::string , int coeficient, int );
+    uechoix(std::string , std::string , int );
     ~uechoix();
 
     // méthode modificateur
-    void setUe(ue*);
-    void supprimerUe(int);
+    void mettreUe(ecue*);
+    void supprimerEcue(int);
 
     // méthode retour
-    std::vector <ue*> ueDisponible() const ;
+    std::vector <ecue*> ecueDisponible() const ;
 
     // méthode abstraite
     virtual void afficher(std::ostream&) const override;
 //    virtual int nombreTotalHeure() const override;
 
 private:
-    std::vector <ue*> d_choixDisponibleUe;
+    std::vector <ecue*> d_choixDisponibleEcue;
 };
 
 #endif // UECHOIX_H
